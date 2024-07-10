@@ -6,15 +6,6 @@ def accu_display(y, y_pred):
     print(f'Accuracy: {accuracy}\n\nClassification Report:\n{classification_report(y, y_pred)}')
 
     
-def confusion_matrix(y, y_pred):
-    
-    conf_matrix = confusion_matrix(y, y_pred)
-
-    disp = ConfusionMatrixDisplay(confusion_matrix = conf_matrix,
-                                 display_labels=["Survived", "Not Survived"])
-    disp.plot()
-
-    
 def roc(y, y_pred):
     
     fpr , tpr, thresholds = roc_curve(y, y_pred)
@@ -28,3 +19,12 @@ def roc(y, y_pred):
     plt.show()
 
     print("Area under Roc Curve for SVM: ", "%.3f" % auc(fpr, tpr))
+    
+    
+def conf_mat(y, y_pred):
+    
+    conf_matrix = confusion_matrix(y, y_pred)
+
+    disp = ConfusionMatrixDisplay(confusion_matrix = conf_matrix,
+                                 display_labels=["Survived", "Not Survived"])
+    disp.plot()
